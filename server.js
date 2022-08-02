@@ -114,12 +114,16 @@ client.on("message", message => {
     if(!message.guild) return
     if(!message.guild.id) return
     let i = db.fetch(`emoji_${message.guild.id}`)
+    let kanal = db.fetch(`chnl_${message.guild.id}`)
 
     if(!i) return
     if(i === "acik") {
-        message.react(`${settings.emoji}`).catch(err => console.log(err))
+        if (kanal != "all" && null) {
+            if (message.channel.id == kanal) return message.react(`${settings.emoji}`).catch(err => console.log(err))
+        } else {
+            message.react(`${settings.emoji}`).catch(err => console.log(err))
+        }
     } else if (i === "kapali") {
         return
     }
-
 })
