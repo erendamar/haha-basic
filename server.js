@@ -118,7 +118,7 @@ client.on("message", message => {
 
     if(!i) return
     if(i === "acik") {
-        if (kanal != "all" && null) {
+        if (kanal != "all" && kanal != null) { //burada kanal != "all" && null yapmama rağmen garip bir şekilde tüm kanallara attı
             if (message.channel.id == kanal) return message.react(`${settings.emoji}`).catch(err => console.log(err))
         } else {
             message.react(`${settings.emoji}`).catch(err => console.log(err))
